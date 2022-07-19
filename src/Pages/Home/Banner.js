@@ -1,7 +1,8 @@
 import React from "react";
 
 const Banner = () => {
-    const b0 = 'https://img.freepik.com/premium-photo/builders-with-laptop-tools_1401-3150.jpg?w=996';
+    // const b0 = 'https://img.freepik.com/premium-photo/builders-with-laptop-tools_1401-3150.jpg?w=996';
+    const b0 = 'https://html.themexriver.com/industo/images/gallery/1.jpg';
     const b1 = 'https://media.istockphoto.com/photos/full-frame-shot-of-various-hand-tools-arranged-on-wood-picture-id614836688?b=1&k=20&m=614836688&s=170667a&w=0&h=xRBbCmrc-ylaniPc5TLA6yS4NMUcSytx99PrAxAJP3M=';
     const b2 = 'https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?cs=srgb&dl=pexels-pixabay-162553.jpg&fm=jpg';
     const b3 = 'https://thumbs.dreamstime.com/b/house-made-tools-14096590.jpg';

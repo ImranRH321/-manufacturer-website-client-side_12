@@ -1,10 +1,36 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { useForm } from "react-hook-form"
+import { useCreateUserWithEmailAndPassword ,useSignInWithGoogle} from 'react-firebase-hooks/auth';
+import auth from '../../firebase/firebase.init';
+import Loading from '../Shared/Loading';
 
 const Register = () => {
-    const {register, handleSubmit,  formState: { errors}} = useForm();
-      const onSubmit = data => console.log(data);
+    const {register, handleSubmit,  formState: { errors}, } = useForm();
+   /*  ========== new user register ========  */
+   const [
+    createUserWithEmailAndPassword,user,loading,error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+     /*  ======== Google user ========  */
+     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+     
+      /* ==== navigate ==== */
+      const navigate = useNavigate()
+
+      if(user|| gUser){
+        console.log('user', user, 'guser', gUser);
+        navigate('/')
+
+      }
+
+if( true||loading || gLoading){
+ return <Loading></Loading>
+}
+ 
+ const onSubmit = data =>{
+   console.log(data)
+   createUserWithEmailAndPassword(data.email, data.password)
+ };
 
 
 
@@ -22,7 +48,7 @@ const Register = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text">Name</span>
               </label>
               <input
                 type="text"
@@ -132,7 +158,7 @@ const Register = () => {
             </Link>
           </p>
           <div class="divider mt-0">OR</div>
-          <button class="btn ">Google Sign</button>
+          <button onClick={()=>signInWithGoogle()} class="btn ">Google Sign</button>
         </div>
       </div>
     </div>

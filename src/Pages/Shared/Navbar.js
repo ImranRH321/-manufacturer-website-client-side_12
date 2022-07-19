@@ -37,7 +37,9 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl" alt="l">Doctor-portal</a>
+        <a className="btn btn-ghost normal-case text-xl" alt="l">
+          <img src="https://htmldemo.net/lukas/lukas/assets/img/logo.png" alt="" />
+        </a>
       </div>
         
       <div className="navbar-center hidden lg:flex">

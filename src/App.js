@@ -8,6 +8,7 @@ import Orders from "./Pages/Dashboard/Orders";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Login/Register";
+import ServicesDetails from "./Pages/Services/ServicesDetails";
 import Navbar from "./Pages/Shared/Navbar";
 import NotFound from "./Pages/Shared/NotFound";
 
@@ -17,6 +18,7 @@ function App() {
       <Navbar></Navbar>
      <Routes>
       <Route path="/" element={<Home></Home>} />
+      <Route path="/service/:userId" element={<ServicesDetails></ServicesDetails>} />
       <Route path="/dashboard" element={<Dashboard></Dashboard>}>
       <Route path="orders" element={<Orders></Orders>} />
       <Route path="addReview" element={<AddReview></AddReview>} />

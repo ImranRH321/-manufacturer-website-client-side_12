@@ -1,7 +1,7 @@
 import React from 'react';
 import Services from '../Services/Services';
 import Discount from './Discount';
-// import Footer from '../Shared/Footer';
+import Footer from '../Shared/Footer';
 // import Banner from './Banner';
 // import KindOfParts from './KindOfParts';
 
@@ -12,8 +12,8 @@ const Home = () => {
             {/* <Banner></Banner> */}
              <Services></Services>
             {/* <KindOfParts></KindOfParts> */}
-            <Discount></Discount>
-            {/* <Footer></Footer> */}
+            {/* <Discount></Discount> */}
+            <Footer></Footer>
         </div>
     );
 };

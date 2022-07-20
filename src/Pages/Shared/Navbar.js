@@ -1,24 +1,34 @@
-import { signOut } from 'firebase/auth';
-import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import {Link} from 'react-router-dom';
-import auth from '../../firebase/firebase.init';
+import { signOut } from "firebase/auth";
+import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link } from "react-router-dom";
+import auth from "../../firebase/firebase.init";
 
 const Navbar = () => {
-const [user] = useAuthState(auth)
-const logout = () => {
-  signOut(auth);
-};
+  const [user] = useAuthState(auth);
+  const logout = () => {
+    signOut(auth);
+  };
 
-    const menuItems = <>
+  const menuItems = (
+    <>
       <li>
         <Link to="/">Home</Link>
-        <Link to="/dashboard">Dashboard</Link>
-        { user ? <><button className='font-bold' onClick={()=>logout()}>LogOut </button></> : <Link to="/login">Login</Link>}
+        {user && <Link to="/dashboard">Dashboard</Link>}
+        {user ? (
+          <>
+            <button className="font-bold" onClick={() => logout()}>
+              LogOut{" "}
+            </button>
+          </>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </li>
     </>
-    return (
-        <div className="navbar bg-base-100">
+  );
+  return (
+    <div className="navbar bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -45,18 +55,45 @@ const logout = () => {
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl" alt="l">
-          <img src="https://htmldemo.net/lukas/lukas/assets/img/logo.png" alt="" />
+          <img
+            src="https://htmldemo.net/lukas/lukas/assets/img/logo.png"
+            alt=""
+          />
         </a>
       </div>
-        
+
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
+      {/* {user && (
+        <a className="btn">
+          <span>{user?.displayName}</span>
+        </a>
+      )} */}
       <div class="navbar-end">
-    {user && <a className="btn"><span>{user?.displayName}</span></a>}
-  </div>
+        <label
+          for="dashboard_side_nav"
+          tabIndex="1"
+          className="btn btn-ghost lg:hidden"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </label>
+      </div>
     </div>
-    );
+  );
 };
 
 export default Navbar;

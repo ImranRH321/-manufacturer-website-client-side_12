@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.init";
@@ -18,13 +18,14 @@ const Login = () => {
   
   // ___GoogleUser____
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-
-
+ const navigate = useNavigate()
+ let location = useLocation();
+ const from = location.state?.from?.pathname || "/";
   
-  if (user || gUser) {
-    console.log("user", user, "guser", gUser);
-    Navigate("/");
-  }
+ if (user || gUser) {
+  console.log("user", user, "guser", gUser);
+  navigate(from, { replace: true });
+}
 
 
   if (loading || gLoading) {
@@ -40,7 +41,7 @@ const Login = () => {
 
     let setError;
     if(error || gError){
-      setError = <p className="text-red-500 font-bold">Error {error?.message} {gError.message}</p>
+      setError = <p className="text-red-500 font-bold">Error {error?.message} {gError?.message}</p>
     }
    
 
@@ -99,6 +100,10 @@ const Login = () => {
                     value: 6,
                     message: "Must be 6 characters or longer",
                   },
+                  pattern: {
+                    value: /(?=.*\W)/,
+                    message: "At least one digit,",
+                  },
                 })}
               />
               <label className="label">
@@ -112,6 +117,11 @@ const Login = () => {
                     {errors.password.message}
                   </span>
                 )}
+               {errors.password?.type === "pattern" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.password.message}
+                    </span>
+                  )}
               </label>
             </div>
            {setError}

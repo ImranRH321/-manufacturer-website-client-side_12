@@ -7,6 +7,7 @@ const useServiceDetails = serviceId => {
        fetch(url)
        .then(res =>res.json())
        .then(data => {
+        // console.log(data[0]);
         setServices(data)
        }) 
     },[serviceId])

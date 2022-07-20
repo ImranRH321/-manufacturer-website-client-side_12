@@ -1,11 +1,49 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import auth from "../../firebase/firebase.init";
+import Loading from "../Shared/Loading";
 
 const Login = () => {
-    const {register,handleSubmit, formState: { errors },} = useForm();
-    const onSubmit = data => console.log(data);
+  const {register,handleSubmit, formState: { errors },} = useForm();
+
+  //  ___signInUser____
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
   
+  // ___GoogleUser____
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+
+
+  
+  if (user || gUser) {
+    console.log("user", user, "guser", gUser);
+    Navigate("/");
+  }
+
+
+  if (loading || gLoading) {
+    return <Loading></Loading>;
+  }
+
+
+    const onSubmit = data => {
+        console.log(data)
+        signInWithEmailAndPassword(data.email, data.password)
+    };
+
+
+    let setError;
+    if(error || gError){
+      setError = <p className="text-red-500 font-bold">Error {error?.message} {gError.message}</p>
+    }
+   
+
   return (
     <div className="flex h-96 mt-20 justify-center items-center">
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -76,7 +114,7 @@ const Login = () => {
                 )}
               </label>
             </div>
-
+           {setError}
             <input
               className="btn w-full max-w-xs btn-success capitalize text-black "
               type="submit"
@@ -90,7 +128,9 @@ const Login = () => {
             </Link>
           </p>
           <div class="divider">OR</div>
-          <button class="btn">Google Sign</button>
+          <button onClick={() => signInWithGoogle()} class="btn ">
+              Google Sign
+            </button>
         </div>
       </div>
     </div>

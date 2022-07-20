@@ -17,7 +17,7 @@ const Register = () => {
   } = useForm();
   /*  ========== new user register ========  */
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
   /*  ======== Google user ========  */
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
@@ -38,6 +38,13 @@ const Register = () => {
     createUserWithEmailAndPassword(data.email, data.password);
     reset();
   };
+
+
+  let setError;
+ if(error || gError){
+   setError = <p className="text-red-500 font-bold">Error {error?.message} {gError.message}</p>
+ }
+
 
   /*======= 
      1.password ar pattern validation kaj kore na(?=.*?[0-9])
@@ -125,7 +132,7 @@ const Register = () => {
                       message: "Must be 6 characters or longer",
                     },
                     pattern: {
-                      value: /(?=.*?[0-9])/,
+                      value: /(?=.*\W)/,
                       message: "At least one digit,",
                     },
                   })}
@@ -148,7 +155,7 @@ const Register = () => {
                   )}
                 </label>
               </div>
-
+              {setError}
               <input
                 className="btn w-full max-w-xs btn-success text-black capitalize"
                 type="submit"

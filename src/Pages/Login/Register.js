@@ -7,6 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.init";
 import Loading from "../Shared/Loading";
+import useTokenUser from "../../Hooks/useTokenUser";
 
 const Register = () => {
   const {
@@ -23,6 +24,9 @@ const Register = () => {
 
   /* ==== navigate ==== */
   const navigate = useNavigate();
+
+   //  ___useTokenUser___
+  const useToken = useTokenUser(user || gUser)
 
   if (user || gUser) {
     console.log("user", user, "guser", gUser);

@@ -3,10 +3,17 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.init";
 import Loading from "../Shared/Loading";
+import DeleteConfirmModal from "./DeleteConfirmModal";
+import Order from "./Order";
 
 const Orders = () => {
   const [user] = useAuthState(auth);
-  const { data: orders, isLoading } = useQuery(["orders", user], () =>
+  const [deleteOrder, setDeleteOrder] = useState(null);
+  const {
+    data: orders,
+    isLoading,
+    refetch,
+  } = useQuery(["orders", user], () =>
     fetch(`http://localhost:5000/order?email=${user?.email}`).then(res =>
       res.json()
     )
@@ -16,6 +23,7 @@ const Orders = () => {
     return <Loading></Loading>;
   }
 
+  console.log(orders);
   return (
     <div>
       <h2 className="text-3xl ">Order page </h2>
@@ -24,23 +32,33 @@ const Orders = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Email</th>
-              <th>Product</th>
-              <th>userName</th>
+              <th>d</th>
+              <th>img</th>
+              <th>Specialty</th>
+              <th>price</th>
+              <th>Cancel</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order, ind) => (
-              <tr>
-                <th>{ind + 1}</th>
-                <th>{order.userEmail}</th>
-                <td>{order.userProductName}</td>
-                <td>{order.userName}</td>
-              </tr>
+              <Order
+                key={order._id}
+                order={order}
+                ind={ind}
+                setDeleteOrder={setDeleteOrder}
+              ></Order>
             ))}
           </tbody>
         </table>
+        <button class="btn btn-sm">payment</button>
       </div>
+      {deleteOrder && (
+        <DeleteConfirmModal
+          deleteOrder={deleteOrder}
+          setDeleteOrder={setDeleteOrder}
+          refetch={refetch}
+        ></DeleteConfirmModal>
+      )}
     </div>
   );
 };

@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import auth from "../../firebase/firebase.init";
 import useServiceDetails from "../../Hooks/useServiceDetails";
+import { toast } from "react-toastify";
 
 const PurchaseDetails = () => {
   const { serviceId } = useParams();
@@ -22,6 +23,7 @@ const PurchaseDetails = () => {
       img: services[0]?.img,
       minimum: services[0]?.minimumQuantity,
       available: services[0]?.availableQuantity,
+      price: services[0]?.price,
     };
     console.log(orders, "order  data");
 
@@ -34,8 +36,8 @@ const PurchaseDetails = () => {
     })
       .then(response => response.json())
       .then(data => {
-        alert("data save");
         console.log("Success:", data);
+        toast.success("successfully Order ");
       });
   };
 
@@ -62,13 +64,14 @@ const PurchaseDetails = () => {
             <small>{services[0]?.description}</small>
           </h2>
           <div>
-            <button
+            <Link
+              to="/dashboard/orders"
               onClick={handleButton}
               type="submit"
               class="btn btn-active btn-primary"
             >
               PurChase
-            </button>
+            </Link>
           </div>
         </div>
       </div>

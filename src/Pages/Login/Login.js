@@ -1,54 +1,56 @@
 import React from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.init";
 import Loading from "../Shared/Loading";
 import useTokenUser from "../../Hooks/useTokenUser";
 
 const Login = () => {
-  const {register,handleSubmit, formState: { errors },} = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   //  ___signInUser____
-  const [
-    signInWithEmailAndPassword,
-    user,
-    loading,
-    error,
-  ] = useSignInWithEmailAndPassword(auth);
-  
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
   // ___GoogleUser____
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
- const navigate = useNavigate()
- let location = useLocation();
- const from = location.state?.from?.pathname || "/";
-  
-//  ___useTokenUser___
- const useToken = useTokenUser(user || gUser)
+  const navigate = useNavigate();
+  let location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
+  //  ___useTokenUser___
+  const useToken = useTokenUser(user || gUser);
 
- if (user || gUser) {
-  console.log("user", user, "guser", gUser);
-  navigate(from, { replace: true });
-}
-
+  if (user || gUser) {
+    console.log("user", user, "guser", gUser);
+    navigate(from, { replace: true });
+  }
 
   if (loading || gLoading) {
     return <Loading></Loading>;
   }
 
+  const onSubmit = data => {
+    console.log(data);
+    signInWithEmailAndPassword(data.email, data.password);
+  };
 
-    const onSubmit = data => {
-        console.log(data)
-        signInWithEmailAndPassword(data.email, data.password)
-    };
-
-
-    let setError;
-    if(error || gError){
-      setError = <p className="text-red-500 font-bold">Error {error?.message} {gError?.message}</p>
-    }
-   
+  let setError;
+  if (error || gError) {
+    setError = (
+      <p className="text-red-500 font-bold">
+        Error {error?.message} {gError?.message}
+      </p>
+    );
+  }
 
   return (
     <div className="flex h-96 mt-20 justify-center items-center">
@@ -122,14 +124,14 @@ const Login = () => {
                     {errors.password.message}
                   </span>
                 )}
-               {errors.password?.type === "pattern" && (
-                    <span className="label-text-alt text-red-500">
-                      {errors.password.message}
-                    </span>
-                  )}
+                {errors.password?.type === "pattern" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.password.message}
+                  </span>
+                )}
               </label>
             </div>
-           {setError}
+            {setError}
             <input
               className="btn w-full max-w-xs btn-success capitalize text-black "
               type="submit"
@@ -138,14 +140,17 @@ const Login = () => {
           </form>
           <p className="mt-3">
             Create A new Account
-            <Link className="btn btn-xs mx-2 text-accent capitalize" to="/register">
+            <Link
+              className="btn btn-xs mx-2 text-accent capitalize"
+              to="/register"
+            >
               Register
             </Link>
           </p>
           <div class="divider">OR</div>
           <button onClick={() => signInWithGoogle()} class="btn ">
-              Google Sign
-            </button>
+            Google Sign
+          </button>
         </div>
       </div>
     </div>

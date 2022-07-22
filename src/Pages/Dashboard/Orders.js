@@ -14,7 +14,7 @@ const Orders = () => {
     isLoading,
     refetch,
   } = useQuery(["orders", user], () =>
-    fetch(`http://localhost:5000/order?email=${user?.email}`).then(res =>
+    fetch(`https://manufacturers.herokuapp.com/order?email=${user?.email}`).then(res =>
       res.json()
     )
   );
@@ -32,11 +32,12 @@ const Orders = () => {
           <thead>
             <tr>
               <th></th>
-              <th>d</th>
+              <th></th>
               <th>img</th>
               <th>Specialty</th>
               <th>price</th>
               <th>Cancel</th>
+              <th>payment</th>
             </tr>
           </thead>
           <tbody>

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.init";
 import Loading from "../Shared/Loading";
@@ -18,37 +19,41 @@ const Register = () => {
   } = useForm();
   /*  ========== new user register ========  */
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   /*  ======== Google user ========  */
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-
+  /*  ======== updateProfile ========  */
+  const [updateProfile, updating, uError] = useUpdateProfile(auth);
   /* ==== navigate ==== */
   const navigate = useNavigate();
 
-   //  ___useTokenUser___
-  const useToken = useTokenUser(user || gUser)
+  //  ___useTokenUser___
+  const useToken = useTokenUser(user || gUser);
 
   if (user || gUser) {
     console.log("user", user, "guser", gUser);
     navigate("/");
   }
 
-  if (loading || gLoading) {
+  if (loading || gLoading || updating) {
     return <Loading></Loading>;
   }
 
-  const onSubmit = data => {
+  const onSubmit = async data => {
     console.log(data);
-    createUserWithEmailAndPassword(data.email, data.password);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
     reset();
   };
 
-
   let setError;
- if(error || gError){
-   setError = <p className="text-red-500 font-bold">Error {error?.message} {gError.message}</p>
- }
-
+  if (error || gError || uError) {
+    setError = (
+      <p className="text-red-500 font-bold">
+        Error {error?.message} {gError.message} {uError.message}
+      </p>
+    );
+  }
 
   /*======= 
      1.password ar pattern validation kaj kore na(?=.*?[0-9])

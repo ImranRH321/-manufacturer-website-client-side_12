@@ -6,7 +6,7 @@ const MyProfile = () => {
   const onSubmit = data => {
     console.log(data);
     reset();
-    fetch("http://localhost:5000/myProfile", {
+    fetch("https://manufacturers.herokuapp.com/myProfile", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

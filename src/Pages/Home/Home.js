@@ -1,5 +1,5 @@
 import React from "react";
-// import Services from "../Services/Services";
+import Services from "../Services/Services";
 import Discount from "./Discount";
 import Experience from "./Experience";
 // import Footer from "../Shared/Footer";
@@ -12,9 +12,9 @@ const Home = () => {
     <div>
       <h1>Home page </h1>
       {/* <Banner></Banner> */}
-       {/* <Services></Services> */}
+       <Services></Services>
        {/* <Experience></Experience> */}
-       
+
       {/* <KindOfParts></KindOfParts> */}
       {/* <Discount></Discount> */}
       {/* <TextEditing></TextEditing> */}

@@ -14,7 +14,9 @@ const Navbar = () => {
     <>
       <li>
         <Link to="/">Home</Link>
-        {user && <Link to="/dashboard">Dashboard</Link>}
+        {user && <>
+          <Link to="/dashboard">Dashboard</Link>
+        </>}
         {user ? (
           <>
             <button className="font-bold" onClick={() => logout()}>

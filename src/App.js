@@ -1,5 +1,5 @@
 import React from "react";
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import AddReview from "./Pages/Dashboard/AddReview";
@@ -13,34 +13,46 @@ import RequireAuth from "./Pages/Login/RequireAuth";
 import PurchaseDetails from "./Pages/Services/PurchaseDetails";
 import Navbar from "./Pages/Shared/Navbar";
 import NotFound from "./Pages/Shared/NotFound";
-import { ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Payment from "./Pages/Dashboard/Payment";
+import AddProduct from "./Pages/Dashboard/AddProduct";
 
 function App() {
   return (
     <div className="App">
       <Navbar></Navbar>
-     <Routes>
-      <Route path="/" element={<Home></Home>} />
+      <Routes>
+        <Route path="/" element={<Home></Home>} />
 
-      <Route path="/details/:serviceId" element={<RequireAuth>
-        <PurchaseDetails></PurchaseDetails>
-      </RequireAuth>} />
-      
-      <Route path="/dashboard" element={<RequireAuth>
-        <Dashboard></Dashboard>
-      </RequireAuth>}>
-      <Route path="orders" element={<Orders></Orders>} />
-      <Route path="addReview" element={<AddReview></AddReview>} />
-      <Route path="myProfile" element={<MyProfile></MyProfile>} />
-      <Route path="payment/:id" element={<Payment></Payment>} />
-      </Route>
-      <Route path="/login" element={<Login></Login>} />
-      <Route path="/register" element={<Register></Register>} />
-      <Route path="*" element={<NotFound></NotFound>} />
-     </Routes>
-     <ToastContainer />
+        <Route
+          path="/details/:serviceId"
+          element={
+            <RequireAuth>
+              <PurchaseDetails></PurchaseDetails>
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard></Dashboard>
+            </RequireAuth>
+          }
+        >
+          <Route path="orders" element={<Orders></Orders>} />
+          <Route path="addReview" element={<AddReview></AddReview>} />
+          <Route path="myProfile" element={<MyProfile></MyProfile>} />
+          <Route path="payment/:id" element={<Payment></Payment>} />
+          <Route path="addProduct" element={<AddProduct></AddProduct>} />
+        </Route>
+        <Route path="/login" element={<Login></Login>} />
+        <Route path="/register" element={<Register></Register>} />
+        <Route path="*" element={<NotFound></NotFound>} />
+      </Routes>
+      <ToastContainer />
     </div>
   );
 }

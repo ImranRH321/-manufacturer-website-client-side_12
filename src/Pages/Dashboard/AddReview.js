@@ -1,34 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import StarRatings from "react-star-ratings";
+import auth from "../../firebase/firebase.init";
 
 const AddReview = () => {
+  const [rating, setRating] = useState(0);
+  const [user] = useAuthState(auth);
+  const changeRating = newRating => {
+    setRating(newRating);
+  };
+
+  console.log(rating);
+  const handleSubmit = event => {
+    event.preventDefault();
+    const reviewText = event.target.reviewText.value;
+    const reviewBooking = {
+      star: rating,
+      name: user.displayName,
+      email: user.email,
+      text: reviewText,
+    };
+    //  send to the server
+    fetch("http://localhost:5000/rating", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reviewBooking),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
+  };
+
   return (
     <div className="mt-6">
-      <div class="rating">
-        <input type="radio" name="rating-1" class="mask mask-star" />
-        <input type="radio" name="rating-1" class="mask mask-star" checked />
-        <input type="radio" name="rating-1" class="mask mask-star" />
-        <input type="radio" name="rating-1" class="mask mask-star" />
-        <input type="radio" name="rating-1" class="mask mask-star" />
-      </div>
-      <p className="font-bold text-1xl">Your Ratting</p>
-      <input
-        type="number"
-        placeholder="number 1 - 5"
-        class="input input-bordered input-sm w-full max-w-xs"
+      <StarRatings
+        rating={rating}
+        starRatedColor="blue"
+        changeRating={changeRating}
+        numberOfStars={5}
+        name="rating"
       />
-      <br /> <br />
-      <p className="font-bold text-2xl">Your Review</p>
-      <input
-        type="text"
-        placeholder="Type here"
-        class="input input-bordered py-14 input-lg w-full max-w-xs"
-      />
-      <br />
-      <button type="submit" class="btn btn-active btn-primary my-3">
-        Checkout
-      </button>
 
-      
+      <p className="font-bold text-1xl">Your Ratting</p>
+      <form onSubmit={handleSubmit}>
+        <input
+          name="reviewText"
+          type="text"
+          placeholder="Type here"
+          class="input input-bordered py-14 input-lg w-full max-w-xs"
+        />
+        <br />
+        <button type="submit" class="btn btn-active btn-primary my-3">
+          Checkout
+        </button>
+      </form>
     </div>
   );
 };

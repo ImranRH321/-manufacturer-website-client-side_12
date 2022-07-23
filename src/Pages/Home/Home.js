@@ -2,6 +2,7 @@ import React from "react";
 import Services from "../Services/Services";
 import Discount from "./Discount";
 import Experience from "./Experience";
+import HomeReview from "./HomeReview";
 // import Footer from "../Shared/Footer";
 // import TextEditing from './TextEditing';
 // import Banner from './Banner';
@@ -13,6 +14,7 @@ const Home = () => {
       <h1>Home page </h1>
       {/* <Banner></Banner> */}
        <Services></Services>
+      <HomeReview></HomeReview>
        {/* <Experience></Experience> */}
 
       {/* <KindOfParts></KindOfParts> */}

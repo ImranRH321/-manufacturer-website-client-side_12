@@ -4,15 +4,18 @@ import { useForm } from "react-hook-form";
 import auth from "../../firebase/firebase.init";
 import { toast } from "react-toastify";
 
-const BookingModal = ({toolService , setToolService }) => {
+const BookingModal = ({ toolService, setToolService, minimumQuantity }) => {
   const { register, handleSubmit, reset } = useForm();
-  const { name, price, _id, img } = toolService;
-
+  const { name, price, _id, img, availableQuantity } =
+    toolService;
+  console.log(toolService);
   const [user] = useAuthState(auth);
 
   const onSubmit = data => {
     console.log(data);
     reset();
+    const quantity = parseInt(data.quantity);
+    console.log(quantity);
     /* .......... */
     const orders = {
       userName: user.displayName,
@@ -25,8 +28,10 @@ const BookingModal = ({toolService , setToolService }) => {
       phone: data.phone,
     };
 
-    console.log("orders", orders);
-
+   
+   if(quantity < minimumQuantity){
+    alert("not ok ")
+   }else{
     fetch("https://manufacturers.herokuapp.com/order", {
       method: "POST",
       headers: {
@@ -38,8 +43,9 @@ const BookingModal = ({toolService , setToolService }) => {
       .then(data => {
         console.log("Success:", data);
         toast.success(" One Order Selected Items");
-        setToolService(null)
+        setToolService(null);
       });
+   }
   };
 
   return (
@@ -62,6 +68,19 @@ const BookingModal = ({toolService , setToolService }) => {
             <input
               class="input input-bordered w-full max-w-xs font-bold text-1xl"
               type="text"
+              value={` availableQuantity--->  ${availableQuantity}`}
+              disabled
+            />
+            <input
+              class="input input-bordered w-full max-w-xs font-bold"
+              placeholder="Your email"
+              type="email"
+              value={`minimumQuantity---->  ${minimumQuantity}`}
+              disabled
+            />
+            <input
+              class="input input-bordered w-full max-w-xs font-bold text-1xl"
+              type="text"
               value={user?.displayName}
               disabled
             />
@@ -71,6 +90,14 @@ const BookingModal = ({toolService , setToolService }) => {
               type="email"
               value={user?.email}
               disabled
+            />
+            {/* quantity */}
+            <input
+              class="input input-bordered w-full max-w-xs font-bold"
+              placeholder="quantity"
+              type="number"
+              {...register("quantity")}
+              
             />
             <input
               class="input input-bordered w-full max-w-xs"

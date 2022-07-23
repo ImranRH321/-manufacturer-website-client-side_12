@@ -45,6 +45,7 @@ const PurchaseDetails = () => {
             </label>
             {toolService && (
               <BookingModal
+              minimumQuantity={minimumQuantity}
                 toolService={toolService}
                 setToolService={setToolService}
               ></BookingModal>

@@ -27,6 +27,8 @@ const AddReview = () => {
       <button type="submit" class="btn btn-active btn-primary my-3">
         Checkout
       </button>
+
+      
     </div>
   );
 };

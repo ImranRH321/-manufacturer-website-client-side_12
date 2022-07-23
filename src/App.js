@@ -18,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Payment from "./Pages/Dashboard/Payment";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import About from "./Pages/Home/About";
+import Blogs from "./Pages/Home/Blogs";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>} />
         <Route path="/about" element={<About></About>} />
+        <Route path="/blogs" element={<Blogs></Blogs>} />
 
         <Route
           path="/details/:serviceId"

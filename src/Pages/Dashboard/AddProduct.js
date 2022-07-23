@@ -22,6 +22,9 @@ const AddProduct = () => {
   };
   return (
     <div>
+      <h1 className="text-3xl text-purple-600 font-bold w-2/3 p-3 my-3 rounded-full mx-auto">
+        Add to Product Tools
+      </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="grid grid-cols-1 gap-4 justify-items-center "

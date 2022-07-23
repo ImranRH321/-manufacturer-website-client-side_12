@@ -17,6 +17,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Payment from "./Pages/Dashboard/Payment";
 import AddProduct from "./Pages/Dashboard/AddProduct";
+import About from "./Pages/Home/About";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home></Home>} />
+        <Route path="/about" element={<About></About>} />
 
         <Route
           path="/details/:serviceId"

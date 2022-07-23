@@ -2,7 +2,7 @@ import React from "react";
 
 const NotFound = () => {
   const bgColors = {
-    backgroundColor: "#313335",
+    background: 'https://htmldemo.net/lukas/lukas/assets/img/banner/a-1.jpg',
     color: "white",
     width: "100%",
     height: "91vh",

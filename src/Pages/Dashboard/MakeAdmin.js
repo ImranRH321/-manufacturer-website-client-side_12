@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import UserRow from "./UserRow";
 
 import Loading from "../Shared/Loading";
 import { useQuery } from "@tanstack/react-query";
 
 const MakeAdmin = () => {
-  // const [users, setUsers] = useState([]);
-
   const {
     data: users,
     isLoading,

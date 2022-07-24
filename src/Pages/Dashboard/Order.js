@@ -14,10 +14,10 @@ const Order = ({ order, ind, setDeleteOrder }) => {
       <th>{ind}</th>
       <th>
         <div class="bg-neutral-focus text-neutral-content rounded-full w-24">
-            <div class="w-24 mask mask-triangle">
+          <div class="w-24 mask mask-triangle">
             <img src={img} alt="" />
-            </div>
           </div>
+        </div>
       </th>
       <td></td>
       <td>{userProductName}</td>

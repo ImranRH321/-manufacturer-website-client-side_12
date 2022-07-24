@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.init";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../Shared/Loading";
 
 const MyProfile = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -10,8 +12,8 @@ const MyProfile = () => {
 
   const onSubmit = data => {
     console.log(data);
-    reset();
-    console.log("data", data);
+   
+    // console.log("data", data);
     fetch(`http://localhost:5000/myProfile?email=${user?.email}`, {
       method: "PUT",
       headers: {
@@ -21,19 +23,38 @@ const MyProfile = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log("Success:", data);
+        reset();
+        refetch()
       });
 
-    //====================
-    fetch("http://localhost:5000/myProfile")
-      .then(response => response.json())
-      .then(data => {
-        console.log("Success:", data);
-        setData(data[0]);
-      });
-
-    // ===========================
   };
+
+  // useEffect(()=> {
+  //   fetch(`http://localhost:5000/myProfile/${user?.email}`)
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log("success:", data);
+  //     setData(data);
+  //   });
+  //  },[user])
+
+  // //  ============ 
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery(["profile", user], () =>
+    fetch(`http://localhost:5000/myProfile/${user?.email}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then(res => res.json())
+  );
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div>
@@ -88,13 +109,14 @@ const MyProfile = () => {
           <div class="card w-96 bg-base-100 shadow-xl">
             <div class="card-body ">
               <div className="font-bold p-5 text-start">
-                <h2>name: {data.name}</h2>
-                <p>Email: {data.email}</p>
+                <h2>name: {users.name}</h2>
+                <p>Email: {users.email}</p>
                 <p>
-                  <span>Linkedin: {data.linkedin}</span>
+                  <span>Linkedin: {users.linkedin}</span>
                 </p>
-                <p>location: {data.location}</p>
-                <p>Phone: {data.phone}</p>
+                {/* <p>location: {users.location}</p> */}
+                <img src={users.linkedin} alt="" />
+                <p>Phone: {users?.phone}</p>
               </div>
             </div>
           </div>

@@ -4,3 +4,12 @@
     height: 400px;
    background-position: center;
 }
+
+/* dashboard  */
+.style{
+    background-color: #0e2f44;
+    color: rgb(236, 236, 236);
+    margin: 10px;
+    font-weight: bolder;
+    font-size: 17px;
+}

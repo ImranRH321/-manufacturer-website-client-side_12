@@ -31,6 +31,7 @@ const AddReview = () => {
       .then(response => response.json())
       .then(data => {
         console.log(data);
+        event.target.reset()
       });
   };
 

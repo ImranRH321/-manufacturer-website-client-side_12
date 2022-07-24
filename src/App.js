@@ -21,6 +21,8 @@ import About from "./Pages/Home/About";
 import Blogs from "./Pages/Home/Blogs";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
 import RequireAdmin from "./Pages/Login/RequireAdmin";
+import ManageProduct from "./Pages/Dashboard/ManageProduct";
+import Portfolio from "./Pages/Home/Portfolio";
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>} />
         <Route path="/about" element={<About></About>} />
+        <Route path="/portfolio" element={<Portfolio></Portfolio>} />
         <Route path="/blogs" element={<Blogs></Blogs>} />
 
         <Route
@@ -61,7 +64,9 @@ function App() {
               </RequireAdmin>
             }
           />
+        <Route path="manageProduct" element={<ManageProduct></ManageProduct>} />
         </Route>
+
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />
         <Route path="*" element={<NotFound></NotFound>} />

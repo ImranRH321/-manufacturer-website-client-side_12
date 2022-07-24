@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase/firebase.init";
 import { toast } from "react-toastify";
 
 const BookingModal = ({ toolService, setToolService, minimumQuantity }) => {
-  const { register, handleSubmit, reset } = useForm();
-  const { name, price, _id, img, availableQuantity } =
-    toolService;
-  console.log(toolService);
+  const { register, handleSubmit, reset, watch } = useForm();
+  const { name, price, _id, img, availableQuantity } = toolService;
+
+
   const [user] = useAuthState(auth);
+  const [quantityData, setQuantityData] = useState(0);
+
+console.log( watch('quantity'));
 
   const onSubmit = data => {
     console.log(data);
@@ -28,24 +31,23 @@ const BookingModal = ({ toolService, setToolService, minimumQuantity }) => {
       phone: data.phone,
     };
 
-   
-   if(quantity < minimumQuantity){
-    alert("not ok ")
-   }else{
-    fetch("https://manufacturers.herokuapp.com/order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(orders),
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log("Success:", data);
-        toast.success(" One Order Selected Items");
-        setToolService(null);
-      });
-   }
+    if (quantity < minimumQuantity || quantity > availableQuantity) {
+      toast.error(`minQuantity <---${minimumQuantity} and availableQuantity-->${availableQuantity}`);
+    } else {
+      fetch("https://manufacturers.herokuapp.com/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orders),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log("Success:", data);
+          toast.success(" One Order Selected Items");
+          setToolService(null);
+        });
+    }
   };
 
   return (
@@ -93,11 +95,11 @@ const BookingModal = ({ toolService, setToolService, minimumQuantity }) => {
             />
             {/* quantity */}
             <input
+              onChange={e => setQuantityData(e.target.value)}
               class="input input-bordered w-full max-w-xs font-bold"
               placeholder="quantity"
               type="number"
               {...register("quantity")}
-              
             />
             <input
               class="input input-bordered w-full max-w-xs"
@@ -113,10 +115,12 @@ const BookingModal = ({ toolService, setToolService, minimumQuantity }) => {
               {...register("phone")}
               required
             />
+
+
             <input
               type="submit"
               value="OrderTools"
-              class="input bg-purple-600 text-white font-bold text-2xl input-bordered w-full max-w-xs"
+              class={`${ watch('quantity') < minimumQuantity &&  watch('quantity') > availableQuantity && 'btn-disabled'}  input btn-primary text-white font-bold text-2xl input-bordered w-full max-w-xs`}
             />
           </form>
           {/* ====================== */}

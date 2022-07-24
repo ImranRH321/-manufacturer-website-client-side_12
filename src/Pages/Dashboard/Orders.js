@@ -26,7 +26,6 @@ const Orders = () => {
     return <Loading></Loading>;
   }
 
-  console.log(orders);
   return (
     <div>
       <h2 className="text-3xl ">Order page </h2>

@@ -54,7 +54,6 @@ const Orders = () => {
             ))}
           </tbody>
         </table>
-        <button class="btn btn-sm">payment</button>
       </div>
       {deleteOrder && (
         <DeleteConfirmModal

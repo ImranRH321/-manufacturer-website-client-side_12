@@ -20,6 +20,7 @@ import AddProduct from "./Pages/Dashboard/AddProduct";
 import About from "./Pages/Home/About";
 import Blogs from "./Pages/Home/Blogs";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
+import RequireAdmin from "./Pages/Login/RequireAdmin";
 
 function App() {
   return (
@@ -52,7 +53,14 @@ function App() {
           <Route path="myProfile" element={<MyProfile></MyProfile>} />
           <Route path="payment/:id" element={<Payment></Payment>} />
           <Route path="addProduct" element={<AddProduct></AddProduct>} />
-          <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>} />
+          <Route
+            path="makeAdmin"
+            element={
+              <RequireAdmin>
+                <MakeAdmin></MakeAdmin>
+              </RequireAdmin>
+            }
+          />
         </Route>
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />

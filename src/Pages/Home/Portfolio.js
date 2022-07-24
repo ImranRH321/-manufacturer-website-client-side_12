@@ -6,11 +6,6 @@ const Portfolio = () => {
   const self1 = "  https://i.ibb.co/MCKtqjV/cors1.jpg";
   const self2 = "https://i.ibb.co/VNPLKs6/cor2.jpg";
   const self3 = "https://i.ibb.co/3WqCvtj/cors2.jpg";
-  // ============
-  //            https://i.ibb.co/MCKtqjV/cors1.jpg
-  //            https://i.ibb.co/VNPLKs6/cor2.jpg
-  //            https://i.ibb.co/d6q5tnV/cors2.jpg
-  // ============
   return (
     <div>
       <div className="grid grid-cols-2">
@@ -63,22 +58,6 @@ const Portfolio = () => {
         <div>
           <img className="w-[320px]" src={self1} alt="" />
         </div>
-
-        {/*  */}
-        {/* <div className="context  text-start font-bold text-lg">
-          <h1 className="text-2xl">Contact Information</h1>
-          <div class="divider">OR</div>
-          <p>
-            Phone: <small>01974007022</small>
-          </p>
-          <p>
-            Address: <small>comilla sadar south upazila </small>
-          </p>
-          <p>E-mail: imranrh247@gmail.com</p>
-          <p>
-            Website: <span>https://imranrh.netlify.com/</span>
-          </p>
-        </div> */}
       </div>
     </div>
   );

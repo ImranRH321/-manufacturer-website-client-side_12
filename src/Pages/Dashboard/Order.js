@@ -3,8 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Order = ({ order, ind, setDeleteOrder }) => {
   const { img, userProductName, price, _id, paid, transactionId } = order;
+
   const navigate = useNavigate();
 
+
+  console.log(paid);
+  console.log(transactionId);
+
+  
   const handlePayment = id => {
     navigate(`/dashboard/payment/${id}`);
   };

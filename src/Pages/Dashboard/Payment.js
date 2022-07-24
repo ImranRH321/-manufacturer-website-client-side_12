@@ -15,7 +15,12 @@ const Payment = () => {
 
   const url = `https://manufacturers.herokuapp.com/order/${id}`;
   const { data: order, isLoading } = useQuery(["order", id], () =>
-    fetch(url).then(res => res.json())
+    fetch(url, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then(res => res.json())
   );
 
   if (isLoading) {
@@ -40,7 +45,7 @@ const Payment = () => {
       <div class="card md:w-96 bg-base-100 shadow-xl mt-5">
         <div class="card-body">
           <Elements stripe={stripePromise}>
-            <CheckoutForm order={order}/>
+            <CheckoutForm order={order} />
           </Elements>
         </div>
       </div>

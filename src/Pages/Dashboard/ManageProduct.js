@@ -11,7 +11,7 @@ const ManageProduct = () => {
     isLoading,
     refetch,
   } = useQuery(["manage"], () =>
-    fetch(`http://localhost:5000/manage`, {
+    fetch(`https://manufacturers.herokuapp.com/manage`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,

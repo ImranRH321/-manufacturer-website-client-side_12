@@ -14,10 +14,11 @@ const MyProfile = () => {
     console.log(data);
    
     // console.log("data", data);
-    fetch(`http://localhost:5000/myProfile?email=${user?.email}`, {
+    fetch(`https://manufacturers.herokuapp.com/myProfile?email=${user?.email}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify(data),
     })
@@ -30,7 +31,7 @@ const MyProfile = () => {
   };
 
   // useEffect(()=> {
-  //   fetch(`http://localhost:5000/myProfile/${user?.email}`)
+  //   fetch(`https://manufacturers.herokuapp.com/myProfile/${user?.email}`)
   //   .then(response => response.json())
   //   .then(data => {
   //     console.log("success:", data);
@@ -44,7 +45,7 @@ const MyProfile = () => {
     isLoading,
     refetch,
   } = useQuery(["profile", user], () =>
-    fetch(`http://localhost:5000/myProfile/${user?.email}`, {
+    fetch(`https://manufacturers.herokuapp.com/myProfile/${user?.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,

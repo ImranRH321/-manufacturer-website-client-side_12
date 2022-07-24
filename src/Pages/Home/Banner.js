@@ -17,13 +17,13 @@ const Banner = () => {
   let imgIndex = 0;
   const imgElement = document.getElementById("slider-img");
   setInterval(() => {
-    if (imgIndex >= images?.length) {
+    if (imgIndex >= images.length) {
       imgIndex = 0;
     }
     const imgUrl = images[imgIndex];
     imgElement.setAttribute("src", imgUrl);
     imgIndex++;
-  }, 1000);
+  }, 3000);
   return (
     <div>
       <div class="carousel w-full h-screen">

@@ -26,7 +26,7 @@ import Portfolio from "./Pages/Home/Portfolio";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App px-5">
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home></Home>} />

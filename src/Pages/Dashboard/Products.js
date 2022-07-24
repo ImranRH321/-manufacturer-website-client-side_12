@@ -17,7 +17,7 @@ const Products = ({ products, ind, setDeleteProduct }) => {
       <td className="">{userEmail}</td>
       <td className="">{userProductName}</td>
       <td className="">{price}</td>
-      <td >{address}</td>
+      <td>{address}</td>
       <td>
         <label
           onClick={() => setDeleteProduct(products)}

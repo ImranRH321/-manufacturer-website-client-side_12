@@ -5,7 +5,7 @@ const UserRow = ({ user, ind, refetch }) => {
   const { email, role } = user;
 
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://manufacturers.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -30,7 +30,7 @@ const UserRow = ({ user, ind, refetch }) => {
   // remove user
   const handleRemoveUser = email => {
     // alert("Via Tumi ki user sure");
-    fetch(`http://localhost:5000/admin/${email}`, {
+    fetch(`https://manufacturers.herokuapp.com/admin/${email}`, {
       method: "DELETE",
     })
       .then(res => res.json())

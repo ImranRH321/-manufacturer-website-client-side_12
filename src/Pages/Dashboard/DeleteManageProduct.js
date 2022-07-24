@@ -7,7 +7,7 @@ const DeleteManageProduct = ({ deleteProduct,refetch , setDeleteProduct}) => {
   const { userProductName, _id } = deleteProduct;
   console.log(userProductName);
   const deleteItems = _id => {
-    fetch(`http://localhost:5000/manage/${_id}`, {
+    fetch(`https://manufacturers.herokuapp.com/manage/${_id}`, {
       method: "DELETE",
     })
       .then(res => res.json())

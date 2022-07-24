@@ -9,7 +9,12 @@ const HomeReview = () => {
     setRating(newRating);
   };
 
-  fetch("http://localhost:5000/rating")
+  fetch("https://manufacturers.herokuapp.com/rating", {
+    method: "GET",
+    headers: {
+     authorization: `Bearer ${localStorage.getItem('token')}`
+    },
+  })
     .then(res => res.json())
     .then(data => {
       setHomeRating(data);

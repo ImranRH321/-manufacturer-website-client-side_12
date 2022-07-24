@@ -21,10 +21,11 @@ const AddReview = () => {
       text: reviewText,
     };
     //  send to the server
-    fetch("http://localhost:5000/rating", {
+    fetch("https://manufacturers.herokuapp.com/rating", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+       
       },
       body: JSON.stringify(reviewBooking),
     })

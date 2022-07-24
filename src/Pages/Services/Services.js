@@ -6,7 +6,7 @@ const Services = () => {
   const [services] = useCommonServices();
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {services.slice(0,6).map(service => (
+      {services.map(service => (
         <Service key={service.id} service={service}></Service>
       ))}
     </div>

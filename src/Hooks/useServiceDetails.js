@@ -4,7 +4,12 @@ const useServiceDetails = serviceId => {
   const [services, setServices] = useState({});
   useEffect(() => {
     const url = `https://manufacturers.herokuapp.com/service/${serviceId}`;
-    fetch(url)
+    fetch(url, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
       .then(res => res.json())
       .then(data => {
         setServices(data[0]);

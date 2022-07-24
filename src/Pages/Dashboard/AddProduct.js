@@ -7,10 +7,10 @@ const AddProduct = () => {
   const onSubmit = data => {
     console.log(data);
     reset();
-    fetch("http://localhost:5000/service", {
+    fetch("https://manufacturers.herokuapp.com/addProduct", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(data),
     })

@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const useTokenUser = user => {
-  console.log(user, "==============");
-  const email = user?.user?.email;
-  const sameUser = { email: email };
+  const [token, setToken] = useState("");
 
   useEffect(() => {
+    const email = user?.user?.email;
+    const sameUser = { email: email };
+    console.log(email, sameUser);
     if (email) {
-      fetch(`https://manufacturers.herokuapp.com/user?email=${email}`, {
+      fetch(`http://localhost:5000/user?email=${email}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -16,10 +17,14 @@ const useTokenUser = user => {
       })
         .then(response => response.json())
         .then(data => {
-          console.log("Success:", data);
+          const token = data.token;
+          localStorage.setItem("token", token);
+          setToken(token);
         });
     }
   }, [user]);
+
+  return [token];
 };
 
 export default useTokenUser;

@@ -27,9 +27,9 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   //  ___useTokenUser___
-  const useToken = useTokenUser(user || gUser);
+  const [token] = useTokenUser(user || gUser);
 
-  if (user || gUser) {
+  if (token) {
     console.log("user", user, "guser", gUser);
     navigate(from, { replace: true });
   }

@@ -1,0 +1,26 @@
+import React, { useEffect, useState } from "react";
+
+const useAdmin = user => {
+  const [admin, setAdmin] = useState(false);
+  useEffect(() => {
+    const email = user?.email;
+    console.log("userAdmin", email);
+    if (email) {
+      fetch(`http://localhost:5000/admin/${email}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log("useAdmin data", data);
+          setAdmin(data.admin);
+        });
+    }
+  }, [user]);
+  return [admin];
+};
+
+export default useAdmin;

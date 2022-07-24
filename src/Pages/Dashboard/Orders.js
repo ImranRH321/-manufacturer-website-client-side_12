@@ -14,9 +14,12 @@ const Orders = () => {
     isLoading,
     refetch,
   } = useQuery(["orders", user], () =>
-    fetch(`https://manufacturers.herokuapp.com/order?email=${user?.email}`).then(res =>
-      res.json()
-    )
+    fetch(`http://localhost:5000/order?email=${user?.email}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then(res => res.json())
   );
 
   if (isLoading) {
@@ -41,7 +44,7 @@ const Orders = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order, ind) => (
+            {orders?.map((order, ind) => (
               <Order
                 key={order._id}
                 order={order}

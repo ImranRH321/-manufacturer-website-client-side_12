@@ -28,9 +28,9 @@ const Register = () => {
   const navigate = useNavigate();
 
   //  ___useTokenUser___
-  const useToken = useTokenUser(user || gUser);
+  const [token] = useTokenUser(user || gUser);
 
-  if (user || gUser) {
+  if (token) {
     console.log("user", user, "guser", gUser);
     navigate("/");
   }

@@ -120,11 +120,13 @@ console.log( watch('quantity'));
             <input
               type="submit"
               value="OrderTools"
-              class={`${ watch('quantity') < minimumQuantity &&  watch('quantity') > availableQuantity && 'btn-disabled'}  input btn-primary text-white font-bold text-2xl input-bordered w-full max-w-xs`}
+              disabled={(watch('quantity') < minimumQuantity || watch('quantity') > availableQuantity) && true}
+              // watch
+              class='input btn-primary text-white font-bold text-2xl input-bordered w-full max-w-xs'
             />
           </form>
           {/* ====================== */}
-        </div>
+        </div> 
       </div>
     </div>
   );

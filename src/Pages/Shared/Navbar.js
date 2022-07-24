@@ -3,6 +3,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../firebase/firebase.init";
+import '../Home/style.css'
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -14,27 +15,27 @@ const Navbar = () => {
   const menuItems = (
     <>
       <li>
-        <Link to="/">Home</Link>
-        {/* <Link to="/about">About</Link> */}
-        <Link to="/blogs">Blogs</Link>
-        <Link to="/portfolio">Portfolio</Link>
+        <Link className="link" to="/">Home</Link>
+        <Link className="link" to="/about">About</Link>
+        <Link className="link" to="/blogs">Blogs</Link>
+        <Link className="link" to="/portfolio">Portfolio</Link>
         {user && <>
-          <Link to="/dashboard">Dashboard</Link>
+          <Link className="link" to="/dashboard">Dashboard</Link>
         </>}
         {user ? (
           <>
-            <button className="font-bold" onClick={() => logout()}>
+            <button  className="font-bold link" onClick={() => logout()}>
               LogOut{" "}
             </button>
           </>
         ) : (
-          <Link to="/login">Login</Link>
+          <Link className="link" to="/login">Login</Link>
         )}
       </li>
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar link">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -60,11 +61,12 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl" alt="l">
-          <img
+        <a className="btn logo normal-case text-xl" alt="l">
+          {/* <img
             src="https://htmldemo.net/lukas/lukas/assets/img/logo.png"
             alt=""
-          />
+          /> */}
+          Manufacturer
         </a>
       </div>
 

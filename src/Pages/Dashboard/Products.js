@@ -2,8 +2,8 @@ import React from "react";
 
 const Products = ({ products, ind, setDeleteProduct }) => {
   // const { img, userProductName, price, _id, paid, transactionId } = products;
-  const { img, userProductName, price, address, userEmail } = products;
-
+  const { img, userProductName, price, address, userEmail, paid } = products;
+  console.log("pain", paid);
   return (
     <tr>
       <th>{ind}</th>
@@ -27,6 +27,11 @@ const Products = ({ products, ind, setDeleteProduct }) => {
           Deleted
         </label>
       </td>
+      {price && paid ? (
+        <button class="btn btn-xs">Paid</button>
+      ) : (
+        <button class="btn btn-xs">Unpaid</button>
+      )}
     </tr>
   );
 };

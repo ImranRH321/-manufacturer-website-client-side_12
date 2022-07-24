@@ -13,3 +13,23 @@
     font-weight: bolder;
     font-size: 17px;
 }
+
+/* navbar  */
+
+.link{
+    background-color: black;
+    color: wheat;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom: 2px solid rgb(217, 217, 217);
+    border-top: 2px solid rgb(217, 217, 217);
+    margin: 0 20px;
+}
+.link:hover{
+    color: rgb(111, 227, 111);
+    transition: all 500ms;
+}
+.logo{
+    color: rgb(111, 227, 111);
+}

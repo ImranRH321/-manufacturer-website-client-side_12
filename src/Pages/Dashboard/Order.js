@@ -7,8 +7,8 @@ const Order = ({ order, ind, setDeleteOrder }) => {
   const navigate = useNavigate();
 
 
-  console.log(paid);
-  console.log(transactionId);
+  console.log('pain', paid);
+  // console.log(transactionId);
 
   
   const handlePayment = id => {

@@ -24,10 +24,11 @@ const HomeReview = () => {
   // console.log(homeRating,'rating');
 
   return (
-    <div className="mt-14">
+    <div className="my-14 ">
+      <h1 className="text-5xl my-5 text-center font-bold">Customers Review </h1>
       <div className="grid grid:cols-1 md:grid-cols-3 gap-5">
         {homeRating?.map(review => (
-          <div class="card w-90 bg-base-100 shadow-xl">
+          <div class="card w-90 bg-fuchsia-100 shadow-xl">
             <div class="card-body">
               <h2 class="card-title">{review?.name}</h2>
               <StarRatings

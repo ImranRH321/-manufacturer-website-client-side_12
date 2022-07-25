@@ -2,16 +2,16 @@ import React from "react";
 
 const Experience = () => {
   return (
-    <div className="hero min-h-screen bg-base-20">
+    <div className="hero min-h-screen bg-fuchsia-900	text-white ">
       <div>
-        <h1 className="text-6xl text-center text-primary font-bold my-5">
+        <h1 className="text-6xl text-center text-white font-bold my-5">
           MILLIONS BUSINESS TRUST US{" "}
         </h1>
         <h1 className="text-2xl text-center my-5 font-bold">
           TRY TO UNDERSTAND USERS EXPECTATION
         </h1>
         <div class="divider">Rx</div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 text-black">
           {/* ------------------ */}
           <div class="card bg-base-100 shadow-xl">
             <div class="card-body">

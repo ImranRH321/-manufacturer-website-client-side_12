@@ -28,9 +28,9 @@ const Products = ({ products, ind, setDeleteProduct }) => {
         </label>
       </td>
       {price && paid ? (
-        <button class="btn btn-xs">Paid</button>
+        <button class="btn btn-xs btn-success">Pending</button>
       ) : (
-        <button class="btn btn-xs">Unpaid</button>
+        <button class="btn btn-xs btn-info">Unpaid</button>
       )}
     </tr>
   );

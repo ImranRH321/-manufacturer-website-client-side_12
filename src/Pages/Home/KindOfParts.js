@@ -9,7 +9,7 @@ const KindOfParts = () => {
 
   return (
     <div>
-      <div class=" w-full h-3/5 p-5">
+      <div class=" w-full h-3/5 p-5 bg-violet-300	">
         <div>
           <h1 className="text-5xl font-bold my-14">
             ALL KINDS OF PARTS THAT YOU <br /> NEED CAN FIND HERE

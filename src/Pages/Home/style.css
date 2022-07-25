@@ -5,31 +5,47 @@
    background-position: center;
 }
 
-/* dashboard  */
+/*======================== dashboard  ===========================*/
 .style{
-    background-color: #0e2f44;
+    background-color: #d31aaedc;
     color: rgb(236, 236, 236);
     margin: 10px;
     font-weight: bolder;
     font-size: 17px;
 }
 
-/* navbar  */
+/*======================== navbar  =====================*/
 
-.link{
+.a{
     background-color: black;
     color: wheat;
     text-decoration: none;
     font-size: 20px;
     font-weight: 600;
-    border-bottom: 2px solid rgb(217, 217, 217);
-    border-top: 2px solid rgb(217, 217, 217);
+    /* border-bottom: 2px solid rgb(217, 217, 217);
+    border-top: 2px solid rgb(217, 217, 217); */
     margin: 0 20px;
 }
-.link:hover{
+
+.a:hover{
     color: rgb(111, 227, 111);
-    transition: all 500ms;
+    /* transition: all 500ms; */
+        /* border-bottom: 2px solid rgb(217, 217, 217); */
+        /* border-top: 2px solid rgb(217, 217, 217); */
 }
+
 .logo{
     color: rgb(111, 227, 111);
-}
+} 
+
+/* ======================== Service =========================== */
+
+
+
+
+/* .serviceContent{
+    position: relative;
+    font-weight: bolder;
+    background-color: rgb(44, 6, 44);
+    color: whitesmoke;
+} */

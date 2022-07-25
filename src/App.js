@@ -27,7 +27,7 @@ import AllProducts from "./Pages/Dashboard/AllProducts";
 
 function App() {
   return (
-    <div className="App px-5">
+    <div className="App">
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home></Home>} />

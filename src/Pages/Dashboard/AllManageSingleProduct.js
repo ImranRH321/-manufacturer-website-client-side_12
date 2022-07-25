@@ -5,7 +5,6 @@ const AllManageSingleProduct = ({ product, i, refetch }) => {
   const { img, name, minimumQuantity, _id, price } = product;
  console.log(product);
   const deleteSingleItem = _id => {
-    alert("are sure delete");
     fetch(`http://localhost:5000/allProduct/${_id}`, {
       method: "DELETE",
     })

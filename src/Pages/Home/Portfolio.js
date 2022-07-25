@@ -25,6 +25,9 @@ const Portfolio = () => {
           <p>
             <small>college first year Then Stop & programing Leaning </small>
           </p>
+          <p>
+            Email: <span>imranrh247@gmail.com</span>
+          </p>
         </div>
       </div>
       {/* next grid */}
@@ -57,6 +60,70 @@ const Portfolio = () => {
         </div>
         <div>
           <img className="w-[320px]" src={self1} alt="" />
+        </div>
+      </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-5 px-12">
+        {/* <div> */}
+        <div class="card w-96 bg-base-100 shadow-xl">
+          <div class="card-body ">
+            <div className="font-bold p-5 text-start">
+              <h3 className="text-3xl text-primary">Fortfolio</h3>
+              <img
+                class="mask mask-square w-full"
+                src="https://i.ibb.co/1JxYrsj/fortfolo.png"
+                alt=""
+              />
+              <h2 className=" font-bold text-primary mt-5">
+                <a href="https://imranrh.netlify.app//" target="_blank">
+                  https://imranrh.netlify.app/
+                </a>
+              </h2>
+            </div>
+          </div>
+        </div>
+        {/* ==================  */}
+        <div class="card w-96 bg-base-100 shadow-xl">
+          <div class="card-body ">
+            <div className="font-bold p-5 text-start">
+              <h2 className=" font-bold text-primary">
+                client-:{" "}
+                <a href="https://carwarehouse-a72b1.web.app/" target="_blank">
+                  https://carwarehouse-a72b1.web.app/
+                </a>
+              </h2>
+              <img
+                class="mask mask-square w-full"
+                src="https://i.ibb.co/19mv256/assingment11.png"
+              />
+
+              <h2 className=" font-bold text-primary">
+                server-:{" "}
+                <a
+                  href="https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-ImranRH321"
+                  target="_blank"
+                >
+                  https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-ImranRH321
+                </a>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="card w-96 bg-base-100 shadow-xl">
+          <div class="card-body ">
+            <div className="font-bold p-5 text-start">
+              <h2 className="my-5 text-3xl text-purple-500">Client side </h2>
+              <img
+                class="mask mask-square w-full"
+                src="https://i.ibb.co/DzHVsxJ/lastimgs.png"
+              />
+
+              <h2 className=" font-bold text-primary">
+                <a href="https://shoes-product.netlify.app/" target="_blank">
+                  https://shoes-product.netlify.app/
+                </a>
+              </h2>
+            </div>
+          </div>
         </div>
       </div>
     </div>

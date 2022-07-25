@@ -1,13 +1,23 @@
-import React from 'react';
+import React from "react";
+import { ThreeCircles } from "react-loader-spinner";
 
 const Loading = () => {
-    const low = 'https://c.tenor.com/SeZb33LSIvoAAAAC/sun-minimalist.gif'
-    return (
-        <div>
-            {/* <img className='w-full h-fit' src={low} alt="" /> */}
-            <h1 className="text-9xl  font-bold pt-0">Loading....</h1>
-        </div>
-    );
+  return (
+    <div className="flex justify-center my-24">
+      <ThreeCircles
+        height="100"
+        width="100"
+        color="#4fa94d"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+        ariaLabel="three-circles-rotating"
+        outerCircleColor=""
+        innerCircleColor=""
+        middleCircleColor=""
+      />
+    </div>
+  );
 };
 
 export default Loading;

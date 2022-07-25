@@ -38,12 +38,28 @@ const Register = () => {
   if (loading || gLoading || updating) {
     return <Loading></Loading>;
   }
-
+  //  const imgStorageKey = '428322d13b73eac9cb47c3c4911691c0'
+  /* ======================== */
   const onSubmit = async data => {
     console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
     reset();
+    /* ======================== */
+    // const images = data.image[0]
+    // console.log('images', images);
+    // const formData = new FormData();
+    // formData.append('images', images);
+    // const url  = `https://api.imgbb.com/1/upload?expiration=600&key=${imgStorageKey}`
+    // fetch(url, {
+    //   method: 'POST',
+    //   body: formData
+    // })
+    // .then(res => res.json())
+    // .then(data => {
+    //   console.log('data', data);
+    // })
+    /* ---------------- */
   };
 
   let setError;
@@ -56,8 +72,7 @@ const Register = () => {
   }
 
   /*======= 
-     1.password ar pattern validation kaj kore na(?=.*?[0-9])
-     3.login page 0 pattern ar validation ar kak korte hobe  
+     validation gula ar akto stornag korete hboe 
      ========*/
   return (
     <div>
@@ -122,6 +137,29 @@ const Register = () => {
                   )}
                 </label>
               </div>
+              {/*  */}
+              {/* <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  <span className="label-text">Photo</span>
+                </label>
+                <input
+                  type="file"
+                  className="input input-bordered w-full max-w-xs"
+                  {...register("image", {
+                    required: {
+                      value: true,
+                      message: "Image is Required",
+                    },
+                  })}
+                />
+                <label className="label">
+                  {errors.name?.type === "required" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.name.message}
+                    </span>
+                  )}
+                </label>
+              </div> */}
               {/*  */}
               <div className="form-control w-full max-w-xs">
                 <label className="label">

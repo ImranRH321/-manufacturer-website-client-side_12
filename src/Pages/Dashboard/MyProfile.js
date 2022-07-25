@@ -12,34 +12,25 @@ const MyProfile = () => {
 
   const onSubmit = data => {
     console.log(data);
-   
+
     // console.log("data", data);
-    fetch(`https://manufacturers.herokuapp.com/myProfile?email=${user?.email}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem('token')}`
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `https://manufacturers.herokuapp.com/myProfile?email=${user?.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then(response => response.json())
       .then(data => {
         reset();
-        refetch()
+        refetch();
       });
-
   };
-
-  // useEffect(()=> {
-  //   fetch(`https://manufacturers.herokuapp.com/myProfile/${user?.email}`)
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log("success:", data);
-  //     setData(data);
-  //   });
-  //  },[user])
-
-  // //  ============ 
   const {
     data: users,
     isLoading,
@@ -110,14 +101,12 @@ const MyProfile = () => {
           <div class="card w-96 bg-base-100 shadow-xl">
             <div class="card-body ">
               <div className="font-bold p-5 text-start">
-                <h2>name: {users.name}</h2>
-                <p>Email: {users.email}</p>
-                <p>
-                  <span>Linkedin: {users.linkedin}</span>
-                </p>
-                {/* <p>location: {users.location}</p> */}
-                <img src={users.linkedin} alt="" />
-                <p>Phone: {users?.phone}</p>
+                <h2 className="text-3xl font-bold text-primary">
+                  name: {users?.name}
+                </h2>
+                <p className="font-bold my-5">Email: {users?.email}</p>
+                <img class="mask mask-circle" src={users?.linkedin} />
+                <p className="mt-4 font-bold">Phone: {users?.phone}</p>
               </div>
             </div>
           </div>

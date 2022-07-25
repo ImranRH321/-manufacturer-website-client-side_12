@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import '../Home/style.css'
 
-const Service = ({ service }) => {
+const Service = ({ service}) => {
   const { name,  _id, img, price, description, minimumQuantity, availableQuantity } =
     service;
+
   return (
     <div  class="card md:max-w-96 bg-base-100 shadow-xl border-double border-2 border-purple-600 ">
       <figure className="p-5">

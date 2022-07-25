@@ -25,14 +25,13 @@ const AddReview = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-       
       },
       body: JSON.stringify(reviewBooking),
     })
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        event.target.reset()
+        event.target.reset();
       });
   };
 
@@ -55,8 +54,8 @@ const AddReview = () => {
           class="input input-bordered py-14 input-lg w-full max-w-xs"
         />
         <br />
-        <button type="submit" class="btn btn-active btn-primary my-3">
-          Checkout
+        <button type="submit" class="btn px-2 btn-active btn-primary my-3">
+          AddReview
         </button>
       </form>
     </div>

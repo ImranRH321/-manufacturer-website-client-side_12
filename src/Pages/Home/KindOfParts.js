@@ -9,12 +9,12 @@ const KindOfParts = () => {
 
   return (
     <div>
-      <div class=" w-full h-3/5 p-5 bg-violet-300	">
+      <div class=" w-full h-3/5 p-5	text-white">
         <div>
           <h1 className="text-5xl font-bold my-14">
             ALL KINDS OF PARTS THAT YOU <br /> NEED CAN FIND HERE
           </h1>
-          <button className="btn bg-yellow-500 text-black my-4">
+          <button className="btn text-white my-4">
             Shop now{" "}
           </button>
         </div>

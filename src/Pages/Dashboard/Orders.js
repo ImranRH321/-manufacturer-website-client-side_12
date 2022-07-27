@@ -28,21 +28,22 @@ const Orders = () => {
 
   return (
     <div>
-      <h2 className="text-3xl ">Order page </h2>
+      <h2 className="text-3xl my-5 ">Order page </h2>
       <div class="overflow-x-auto">
-        <table class="table w-full">
+        <table class="table w-full text-black">
           <thead>
             <tr>
               <th></th>
               <th></th>
-              <th>img</th>
+              <th>Img</th>
               <th>Specialty</th>
-              <th>price</th>
+              <th>Price</th>
+              <th>Product</th>
+              <th>Payment</th>
               <th>Cancel</th>
-              <th>payment</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-purple-600">
             {orders?.map((order, ind) => (
               <Order
                 key={order._id}

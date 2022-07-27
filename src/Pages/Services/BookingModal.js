@@ -20,7 +20,9 @@ console.log( watch('quantity'));
     const quantity = parseInt(data.quantity);
     console.log(quantity);
     /* .......... */
+
     const orders = {
+      status: 'unpaid',
       userName: user.displayName,
       userEmail: user.email,
       userProductName: name,
@@ -30,7 +32,7 @@ console.log( watch('quantity'));
       address: data.address,
       phone: data.phone,
     };
-
+    console.log('orders', orders);
     if (quantity < minimumQuantity || quantity > availableQuantity) {
       toast.error(`minQuantity <---${minimumQuantity} and availableQuantity-->${availableQuantity}`);
     } else {
@@ -43,7 +45,7 @@ console.log( watch('quantity'));
       })
         .then(response => response.json())
         .then(data => {
-          console.log("Success:", data);
+          console.log("order booking:", data);
           toast.success(" One Order Selected Items");
           setToolService(null);
         });

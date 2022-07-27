@@ -3,7 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../Shared/Loading";
 import Products from "./Products";
 import DeleteManageProduct from "./DeleteManageProduct";
-
+/* 
+১। যখন ইউজার  অর্ডার করবে তখন স্ট্যাটাস আনপেইড 
+২। যখন পেমেন্ট করবে তখন স্ট্যাটাস পেন্ডিং 
+৩। যখন এডমিন শিপ করবে তখন স্ট্যাটাস শিপড
+*/
 const ManageProduct = () => {
   const [deleteProduct, setDeleteProduct] = useState(null);
   const {
@@ -25,16 +29,17 @@ const ManageProduct = () => {
 
   return (
     <div>
-      <h2 className="text-2xl">all manageProducts {manageProducts?.length}</h2>
-      <table class="table w-full m-4">
+      {/* <h2 className="text-2xl">all manageProducts {manageProducts?.length}</h2> */}
+      <table class="table w-full ">
           <thead>
-            <tr>
+            <tr className="text-black">
               <th></th>
-              <th>img</th>
-              <th>email</th>
-              <th>name</th>
-              <th>price</th>
-              <th>address</th>
+              <th>Img</th>
+              <th>Address</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Shipped</th>
+              <th>Product</th>
             </tr>
           </thead>
           <tbody>

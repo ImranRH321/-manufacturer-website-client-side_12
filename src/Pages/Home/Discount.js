@@ -2,7 +2,7 @@ import React from "react";
 
 const Discount = () => {
   return (
-    <div class="hero min-h-screen bg-base-200">
+    <div class="hero min-h-screen text-white">
       <div class="hero-content flex-col lg:flex-row ">
         <div>
               <img

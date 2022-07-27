@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
+
 const CheckoutForm = ({ order }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -109,7 +110,7 @@ const CheckoutForm = ({ order }) => {
           }}
         />
         <button
-          className="btn btn-sm mt-2  btn-primary"
+          className="btn btn-sm mt-10  btn-primary"
           type="submit"
           disabled={!stripe || !clientSecret || success}
         >

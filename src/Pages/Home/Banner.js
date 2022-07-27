@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Banner = () => {
+ const useSlider = useState('')
   const b0 =
     "https://c4.wallpaperflare.com/wallpaper/832/138/523/abstract-car-composite-exploded-view-diagram-wallpaper-preview.jpg";
   const b1 =
@@ -16,14 +17,15 @@ const Banner = () => {
   ];
   let imgIndex = 0;
   const imgElement = document.getElementById("slider-img");
+  console.log(imgElement);
   setInterval(() => {
     if (imgIndex >= images.length) {
       imgIndex = 0;
     }
     const imgUrl = images[imgIndex];
-    imgElement.setAttribute("src", imgUrl);
+    imgElement?.setAttribute("src", imgUrl);
     imgIndex++;
-  }, 3000);
+  }, 1000);
   return (
     <div>
       <div class="carousel w-full h-screen">

@@ -12,11 +12,11 @@ const PurchaseDetails = () => {
 
   return (
     <div>
-      <div class="card lg:card-side bg-base-100 shadow-xl">
+      <div class="card lg:card-side bg-base-100 shadow-xl ">
         <figure>
           <img className="" src={img} alt="Album" />
         </figure>
-        <div class="card-body text-left">
+        <div class="card-body text-left text-black">
           <h2 class="card-title font-bold text-purple-600">{name}</h2>
           <h2 class="card-title font-bold text-black-300">Price: {price}</h2>
           <h2 class="card-title font-bold">
@@ -25,16 +25,9 @@ const PurchaseDetails = () => {
           <h2 class="card-title font-bold">
             <small>AvailableQuantity: {availableQuantity}</small>
           </h2>
-          <h2 class="card-title">
+          <h2 class="card-title ">
             <small>{description}</small>
           </h2>
-          {/* ____^^^^^^^____ */}
-          {/* <div>
-          <button class="font-bold text-2xl p-3"><i class="fa-solid fa-plus  font-bold"></i></button>
-          <input type="number" placeholder="number" class="input input-bordered w-28 mx-4 max-w-xs"/>
-          <button class="font-bold text-2xl p-3"><i class="fa-solid fa-minus font-bold"></i></button>
-          </div> */}
-          {/* ____^^^^^^^____ */}
           <div>
             <label
               onClick={() => setToolService(services)}
@@ -45,7 +38,7 @@ const PurchaseDetails = () => {
             </label>
             {toolService && (
               <BookingModal
-              minimumQuantity={minimumQuantity}
+                minimumQuantity={minimumQuantity}
                 toolService={toolService}
                 setToolService={setToolService}
               ></BookingModal>

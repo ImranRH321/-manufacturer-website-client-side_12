@@ -25,7 +25,7 @@ const MakeAdmin = () => {
   return (
     <div>
       <div class="overflow-x-auto">
-        <table class="table w-full">
+        <table class="table w-full text-black">
           <thead>
             <tr>
               <th></th>

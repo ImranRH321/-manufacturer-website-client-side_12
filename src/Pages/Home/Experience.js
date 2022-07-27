@@ -2,7 +2,7 @@ import React from "react";
 
 const Experience = () => {
   return (
-    <div className="hero min-h-screen bg-fuchsia-900	text-white ">
+    <div className="hero min-h-screen	text-white ">
       <div>
         <h1 className="text-6xl text-center text-white font-bold my-5">
           MILLIONS BUSINESS TRUST US{" "}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import StarRatings from "react-star-ratings";
+import "../Home/style.css";
 
 const HomeReview = () => {
   const [homeRating, setHomeRating] = useState();
@@ -10,12 +11,12 @@ const HomeReview = () => {
   };
 
   fetch("https://manufacturers.herokuapp.com/rating")
-  // , {
-  //   method: "GET",
-  //   headers: {
-  //    authorization: `Bearer ${localStorage.getItem('token')}`
-  //   },
-  // }
+    // , {
+    //   method: "GET",
+    //   headers: {
+    //    authorization: `Bearer ${localStorage.getItem('token')}`
+    //   },
+    // }
     .then(res => res.json())
     .then(data => {
       setHomeRating(data);
@@ -27,18 +28,19 @@ const HomeReview = () => {
     <div className="my-14 ">
       <h1 className="text-5xl my-5 text-center font-bold">Customers Review </h1>
       <div className="grid grid:cols-1 md:grid-cols-3 gap-5">
-        {homeRating?.map(review => (
-          <div class="card w-90 bg-fuchsia-100 shadow-xl">
+        {homeRating?.slice(0.6)?.map(review => (
+          <div class="card w-90 bgx shadow-xl">
             <div class="card-body">
               <h2 class="card-title">{review?.name}</h2>
               <StarRatings
                 rating={review?.star}
-                starRatedColor="blue"
+                starRatedColor="orange"
                 changeRating={changeRating}
                 numberOfStars={5}
                 name="rating"
               />
               <h2 class="card-title">{review?.email}</h2>
+              <div class="divider"></div>
               <h2 class="card-title">{review?.text}</h2>
             </div>
           </div>

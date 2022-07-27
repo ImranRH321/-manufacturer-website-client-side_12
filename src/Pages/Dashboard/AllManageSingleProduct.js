@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 
 const AllManageSingleProduct = ({ product, i, refetch }) => {
   const { img, name, minimumQuantity, _id, price } = product;
- console.log(product);
   const deleteSingleItem = _id => {
     fetch(`http://localhost:5000/allProduct/${_id}`, {
       method: "DELETE",
@@ -18,7 +17,7 @@ const AllManageSingleProduct = ({ product, i, refetch }) => {
       });
   };
   return (
-    <tr>
+    <tr className="text-black">
       <th>{i}</th>
       <td>
         <div class="avatar rounded-full bg-info p-5">
@@ -28,10 +27,10 @@ const AllManageSingleProduct = ({ product, i, refetch }) => {
         </div>
       </td>
       <td className="font-bold">{name}</td>
-      <td>Price: ${price}</td>
-      <td>Quantity: {minimumQuantity}</td>
+      <td className="font-bold">Price: ${price}</td>
+      <td className="font-bold">Quantity: {minimumQuantity}</td>
       <td>
-        <button onClick={() => deleteSingleItem(_id)} class="btn btn-error">
+        <button onClick={() => deleteSingleItem(_id)} class="btn btn-error text-white">
           Cancel
         </button>
       </td>

@@ -23,13 +23,13 @@ const AllProducts = () => {
 
   return (
     <div>
-      <h1 className="text-3xl text-primary my-4 font-bold uppercase">
+      <h1 className="text-3xl text-white  my-10 font-bold uppercase">
         all products {allProducts?.length}
       </h1>
       <div class="overflow-x-auto">
         <table class="table w-full">
           <thead>
-            <tr>
+            <tr className="text-black">
               <th></th>
               <th>img</th>
               <th>Name</th>

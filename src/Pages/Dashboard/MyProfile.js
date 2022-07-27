@@ -50,20 +50,20 @@ const MyProfile = () => {
 
   return (
     <div>
-      <h1 className="text-3xl text-purple-600 font-bold w-2/3 p-3 my-3 rounded-full mx-auto">
+      <h1 className="text-3xl text-white font-bold w-2/3 p-3 my-3 rounded-full mx-auto">
         Update Your Profile
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center ">
         <form onSubmit={handleSubmit(onSubmit)} className="">
           <input
-            class="input input-bordered w-full max-w-xs font-bold m-2"
+            class="input input-bordered w-full max-w-xs font-bold m-2 text-black text-lg"
             {...register("name")}
             type="text"
             value={user?.displayName}
             required
           />
           <input
-            class="input input-bordered w-full max-w-xs font-bold m-2"
+            class="input input-bordered w-full max-w-xs font-bold m-2 text-black text-lg"
             placeholder="Your email"
             type="email"
             {...register("email")}
@@ -101,12 +101,12 @@ const MyProfile = () => {
           <div class="card w-96 bg-base-100 shadow-xl">
             <div class="card-body ">
               <div className="font-bold p-5 text-start">
-                <h2 className="text-3xl font-bold text-primary">
-                  name: {users?.name}
+                <h2 className="text-2xl font-bold text-black">
+                  Name: {users?.name}
                 </h2>
-                <p className="font-bold my-5">Email: {users?.email}</p>
+                <p className="font-bold my-5 text-black">Email: {users?.email}</p>
                 <img class="mask mask-circle" src={users?.linkedin} />
-                <p className="mt-4 font-bold">Phone: {users?.phone}</p>
+                <p className="mt-4 font-bold text-black">Phone: {users?.phone}</p>
               </div>
             </div>
           </div>

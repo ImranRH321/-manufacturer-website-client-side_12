@@ -62,8 +62,8 @@ const Portfolio = () => {
           <img className="w-[320px]" src={self1} alt="" />
         </div>
       </div>
+      {/* ----------------------------- */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-5 px-12">
-        {/* <div> */}
         <div class="card w-96 bg-base-100 shadow-xl">
           <div class="card-body ">
             <div className="font-bold p-5 text-start">

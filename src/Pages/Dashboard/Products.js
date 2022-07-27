@@ -7,7 +7,7 @@ const Products = ({ products, ind, setDeleteProduct }) => {
 
   const makeShippedButton = statusText => {
     alert("are you sure update order shipped");
-    fetch(`http://localhost:5000/paymentConfirm/${_id}`, {
+    fetch(`https://manufacturers.herokuapp.com/paymentConfirm/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

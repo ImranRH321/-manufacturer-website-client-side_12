@@ -9,7 +9,7 @@ const AllProducts = () => {
     isLoading,
     refetch,
   } = useQuery(["product"], () =>
-    fetch("http://localhost:5000/allProducts", {
+    fetch("https://manufacturers.herokuapp.com/allProducts", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const AllManageSingleProduct = ({ product, i, refetch }) => {
   const { img, name, minimumQuantity, _id, price } = product;
   const deleteSingleItem = _id => {
-    fetch(`http://localhost:5000/allProduct/${_id}`, {
+    fetch(`https://manufacturers.herokuapp.com/allProduct/${_id}`, {
       method: "DELETE",
     })
       .then(res => res.json())

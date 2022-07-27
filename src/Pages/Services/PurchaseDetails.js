@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import useServiceDetails from "../../Hooks/useServiceDetails";
+import Loading from "../Shared/Loading";
 import BookingModal from "./BookingModal";
 
 const PurchaseDetails = () => {
   const { serviceId } = useParams();
-  const [services] = useServiceDetails(serviceId);
+  const [services, isLoading] = useServiceDetails(serviceId);
   const { name, price, minimumQuantity, availableQuantity, description, img } =
     services;
   const [toolService, setToolService] = useState(null);
-
+ if(isLoading){
+  return <Loading></Loading>
+ }
   return (
     <div>
       <div class="card lg:card-side bg-base-100 shadow-xl ">

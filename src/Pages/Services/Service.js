@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../Home/style.css";
 
@@ -12,6 +12,7 @@ const Service = ({ service }) => {
     minimumQuantity,
     availableQuantity,
   } = service;
+
 
   return (
     <div class="card md:max-w-96 service  border-double border-2 ">

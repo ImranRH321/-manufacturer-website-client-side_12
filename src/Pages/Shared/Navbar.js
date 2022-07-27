@@ -24,13 +24,13 @@ const Navbar = () => {
         </>}
         {user ? (
           <>
-            <button  className="font-bold a" onClick={() => logout()}>
+            <button  className="font-bold text-black bg-success" onClick={() => logout()}>
               LogOut{" "}
             </button>
-            
+            <span className="font-bold">{user?.displayName}</span>
           </>
         ) : (
-          <Link className="a" to="/login">Login</Link>
+          <Link className="bg-lime-300 font-bold text-black " to="/login">Login</Link>
         )}
       </li>
     </>

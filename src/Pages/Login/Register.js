@@ -76,7 +76,7 @@ const Register = () => {
      ========*/
   return (
     <div>
-      <div className="flex h-screen justify-center items-center">
+      <div className="flex h-screen justify-center items-center text-black bg-purple-black">
         <div className="card w-96 bg-base-100 shadow-xl">
           <div className="card-body">
             <h2 className="text-center text-2xl font-bold">Register</h2>
@@ -219,8 +219,8 @@ const Register = () => {
               </Link>
             </p>
             <div class="divider mt-0">OR</div>
-            <button onClick={() => signInWithGoogle()} class="btn ">
-              Google Sign
+            <button onClick={() => signInWithGoogle()} class="btn btn-success w-20 mx-auto  text-2xl">
+            <i class="fa-brands fa-google"></i>
             </button>
           </div>
         </div>

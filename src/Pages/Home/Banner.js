@@ -32,7 +32,8 @@ const Banner = () => {
         <div id="slide1" class="carousel-item relative w-full">
           <img
             id="slider-img"
-            src="https://wallpaperaccess.com/full/2948004.jpg"
+            src={imgElement}
+            // src="https://wallpaperaccess.com/full/2948004.jpg"
             class="w-full"
             alt=""
           />

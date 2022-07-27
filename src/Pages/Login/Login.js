@@ -53,10 +53,10 @@ const Login = () => {
   }
 
   return (
-    <div className="flex h-96 mt-20 justify-center items-center">
+    <div className="flex h-96 mt-20 justify-center items-center bg-black">
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
-          <h2 className="text-center text-2xl font-bold">Login</h2>
+          <h2 className="text-center text-2xl font-bold text-black">Login</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-xs">
               <label className="label">
@@ -65,7 +65,7 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="Your Email"
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs text-black"
                 {...register("email", {
                   required: {
                     value: true,
@@ -97,7 +97,7 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="Password"
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs text-black"
                 {...register("password", {
                   required: {
                     value: true,
@@ -138,7 +138,7 @@ const Login = () => {
               value="Login"
             />
           </form>
-          <p className="mt-3">
+          <p className="mt-3 text-black">
             Create A new Account
             <Link
               className="btn btn-xs mx-2 text-accent capitalize"
@@ -147,9 +147,9 @@ const Login = () => {
               Register
             </Link>
           </p>
-          <div class="divider">OR</div>
-          <button onClick={() => signInWithGoogle()} class="btn ">
-            Google Sign
+          <div class="divider text-black">OR</div>
+          <button onClick={() => signInWithGoogle()} class="btn btn-success w-20 mx-auto  text-2xl">
+          <i class="fa-brands fa-google"></i>
           </button>
         </div>
       </div>

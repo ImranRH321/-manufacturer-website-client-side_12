@@ -36,8 +36,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg">
-      <div className="navbar-start">
+    <div className="navbar">
+      <div className="navbar-start ">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden text-white">
             <svg
@@ -62,13 +62,10 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <a className="btn logo normal-case text-xl" alt="l">
-          {/* <img
-            src="https://htmldemo.net/lukas/lukas/assets/img/logo.png"
-            alt=""
-          /> */}
+        <Link to='/' className="btn logo normal-case text-xl" alt="l">
+       
           Manufacturer
-        </a>
+        </Link>
       </div>
 
       <div className="navbar-center hidden lg:flex">

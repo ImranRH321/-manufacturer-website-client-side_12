@@ -1,84 +1,67 @@
-import React, { useState } from "react";
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "../Home/style.css";
 
 const Banner = () => {
- const useSlider = useState('')
-  const b0 =
-    "https://c4.wallpaperflare.com/wallpaper/832/138/523/abstract-car-composite-exploded-view-diagram-wallpaper-preview.jpg";
-  const b1 =
-    "https://wallpapers.oceanofwallpapers.com/wallpapers/previews/wallpaper-wy9zzx-887272-Preview.webp";
-  const b2 = "https://wallpapercave.com/wp/wp4043219.jpg";
-  const b3 = "https://wallpapercave.com/wp/wp4043214.jpg";
-
-  const images = [
-    "https://c4.wallpaperflare.com/wallpaper/832/138/523/abstract-car-composite-exploded-view-diagram-wallpaper-preview.jpg",
-    "https://wallpapers.oceanofwallpapers.com/wallpapers/previews/wallpaper-wy9zzx-887272-Preview.webp",
-    "https://wallpapercave.com/wp/wp4043219.jpg",
-    "https://wallpapercave.com/wp/wp4043214.jpg",
-  ];
-  let imgIndex = 0;
-  const imgElement = document.getElementById("slider-img");
-  console.log(imgElement);
-  setInterval(() => {
-    if (imgIndex >= images.length) {
-      imgIndex = 0;
-    }
-    const imgUrl = images[imgIndex];
-    imgElement?.setAttribute("src", imgUrl);
-    imgIndex++;
-  }, 1000);
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+  };
   return (
-    <div>
-      <div class="carousel w-full h-screen">
-        <div id="slide1" class="carousel-item relative w-full">
-          <img
-            id="slider-img"
-            src={imgElement}
-            // src="https://wallpaperaccess.com/full/2948004.jpg"
-            class="w-full"
-            alt=""
-          />
-          <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide4" class="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide2" class="btn btn-circle">
-              ❯
-            </a>
+    <div className="my-20">
+      <div>
+        <Slider {...settings}>
+          <div>
+            <img
+              className="w"
+              src="https://wallpaperaccess.com/full/2948004.jpg"
+              alt=""
+            />
           </div>
-        </div>
-        <div id="slide2" class="carousel-item relative w-full">
-          <img src={b3} class="w-full" alt="" />
-          <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide1" class="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide3" class="btn btn-circle">
-              ❯
-            </a>
+          <div>
+            <img
+              className="w"
+              src="https://p4.wallpaperbetter.com/wallpaper/211/491/776/automotive-beetle-black-and-white-buggy-wallpaper-preview.jpg"
+              alt=""
+            />
           </div>
-        </div>
-        <div id="slide3" class="carousel-item relative w-full">
-          <img src={b2} class="w-full" alt="" />
-          <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide2" class="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide4" class="btn btn-circle">
-              ❯
-            </a>
+          <div>
+            <img
+              className="w"
+              src="https://media.gettyimages.com/photos/tools-picture-id184333719?s=612x612"
+              alt=""
+            />
           </div>
-        </div>
-        <div id="slide4" class="carousel-item relative w-full">
-          <img src={b1} class="w-full" alt="loading" />
-          <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide3" class="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide1" class="btn btn-circle">
-              ❯
-            </a>
+          <div>
+            <img
+              className="w"
+              src="https://wallpapercave.com/wp/wp4043219.jpg"
+              alt=""
+            />
           </div>
-        </div>
+          <div>
+            <img
+              className="w"
+              src="https://c4.wallpaperflare.com/wallpaper/832/138/523/abstract-car-composite-exploded-view-diagram-wallpaper-preview.jpg"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              className="w"
+              src="https://wallpapers.oceanofwallpapers.com/wallpapers/previews/wallpaper-wy9zzx-887272-Preview.webp"
+              alt=""
+            />
+          </div>
+        </Slider>
       </div>
     </div>
   );

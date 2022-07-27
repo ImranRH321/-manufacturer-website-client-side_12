@@ -12,6 +12,16 @@ import About from "./About";
 const Home = () => {
   return (
     <div>
+      {/* 
+      
+        const images = [
+    "https://c4.wallpaperflare.com/wallpaper/832/138/523/abstract-car-composite-exploded-view-diagram-wallpaper-preview.jpg",
+    "https://wallpapers.oceanofwallpapers.com/wallpapers/previews/wallpaper-wy9zzx-887272-Preview.webp",
+    "https://wallpapercave.com/wp/wp4043219.jpg",
+    "https://wallpapercave.com/wp/wp4043214.jpg",
+    "https://wallpaperaccess.com/full/2948004.jpg"
+  ];
+      */}
       <Banner></Banner>
       <Services></Services>
        <HomeReview></HomeReview>

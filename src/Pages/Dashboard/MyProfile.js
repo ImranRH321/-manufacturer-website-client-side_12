@@ -71,21 +71,21 @@ const MyProfile = () => {
             required
           />
           <input
-            class="input input-bordered w-full max-w-xs m-2"
+            class="input input-bordered w-full max-w-xs m-2 text-black"
             placeholder="Location Here.."
             type="text"
             {...register("location")}
             required
           />
           <input
-            class="input input-bordered w-full max-w-xs m-2"
+            class="input input-bordered w-full max-w-xs m-2 text-black"
             placeholder="Linkedin Frofile Link "
             type="url"
             {...register("linkedin")}
             required
           />
           <input
-            class="input input-bordered w-full max-w-xs m-2"
+            class="input input-bordered w-full max-w-xs m-2 text-black"
             placeholder="Phone Here.."
             type="number"
             {...register("phone")}
